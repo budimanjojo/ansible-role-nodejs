@@ -5,7 +5,7 @@
       url: "https://rpm.nodesource.com/setup_{{ nodejs_major_version }}.x"
       dest: /tmp/install_nodejs.sh
       mode: u+x
-  
+
   - name: Run the script
     command: bash /tmp/install_nodejs.sh
 
