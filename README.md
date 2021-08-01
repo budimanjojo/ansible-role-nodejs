@@ -33,7 +33,7 @@ Here is an example playbook:
     nodejs_major_version: "12"
 
   roles:
-  - budimanjojo.packages
+  - budimanjojo.nodejs
 ```
 
 License
