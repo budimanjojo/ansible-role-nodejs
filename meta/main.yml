@@ -1,0 +1,29 @@
+---
+galaxy_info:
+  role_name: nodejs
+  author: Budiman JOJO
+  description: Role to install nodejs and npm from nodesource
+  issue_tracker_url: http://github.com/budimanjojo/ansible-role-nodejs/issues
+  license: license (MIT)
+  min_ansible_version: 2.1
+  platforms:
+  - name: Ubuntu
+    versions:
+    - all
+  - name: Debian
+    versions:
+    - all
+  - name: Fedora
+    versions:
+    - all
+
+  galaxy_tags:
+  - system
+  - packaging
+  - linux
+  - server
+  - development
+  - nodejs
+  - npm
+
+dependencies: []

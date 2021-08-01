@@ -1,0 +1,24 @@
+---
+- block:
+  - name: Getting script from Nodesource
+    get_url:
+      url: "https://deb.nodesource.com/setup_{{ nodejs_major_version }}.x"
+      dest: /tmp/install_nodejs.sh
+      mode: u+x
+  
+  - name: Run the script
+    command: bash /tmp/install_nodejs.sh
+
+  - name: Remove the script
+    file:
+      path: /tmp/install_nodejs.sh
+      state: absent
+
+  - name: Install nodejs
+    apt:
+      name: nodejs
+      state: latest
+
+  become: true
+  when: (nodejs_installed_major is undefined) or
+        (nodejs_installed_major | int < nodejs_major_version | int)

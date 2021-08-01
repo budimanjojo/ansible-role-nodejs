@@ -1,0 +1,16 @@
+---
+- name: Get installed nodejs version
+  command: node -v
+  register: _nodejs_installed_major
+  failed_when: false
+  changed_when: false
+  check_mode: false
+
+- set_fact:
+    nodejs_installed_major: "{{ _nodejs_installed_major.stdout.split('.')[0] | replace('v','') }}"
+
+- import_tasks: Debian.yml
+  when: ansible_os_family == 'Debian'
+
+- import_tasks: RedHat.yml
+  when: ansible_os_family == 'RedHat'
