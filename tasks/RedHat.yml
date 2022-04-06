@@ -1,21 +1,23 @@
 ---
 - block:
   - name: Getting script from Nodesource
-    get_url:
+    ansible.builtin.get_url:
       url: "https://rpm.nodesource.com/setup_{{ nodejs_major_version }}.x"
       dest: /tmp/install_nodejs.sh
       mode: u+x
+    register: downloaded
 
   - name: Run the script
-    command: bash /tmp/install_nodejs.sh
+    ansible.builtin.command: bash /tmp/install_nodejs.sh
+    when: downloaded.changed
 
   - name: Remove the script
-    file:
+    ansible.builtin.file:
       path: /tmp/install_nodejs.sh
       state: absent
 
   - name: Install nodejs
-    yum:
+    ansible.builtin.yum:
       name: nodejs
       state: latest
 
